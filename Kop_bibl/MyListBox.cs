@@ -57,8 +57,8 @@ namespace Kop_bibl
                 string selected = listBox.SelectedItem.ToString();
 
                 string[] layoutWords = layout.Split(new char[] { preValue, postValue });
-                selected = selected.Replace(layoutWords[0], "");
-                for (int i = 2; i < layoutWords.Length; i = i + 2) if (layoutWords[i].Length > 0) selected = selected.Replace(layoutWords[i], ";");
+                //selected = selected.Replace(layoutWords[0], "");
+                for (int i = 0; i < layoutWords.Length; i = i + 2) if (layoutWords[i].Length > 0) selected = selected.Replace(layoutWords[i], ";");
                 string[] selectedValues = selected.Split(';');
 
                 for (int i = 0; i < selectedValues.Length; i++)
@@ -78,33 +78,57 @@ namespace Kop_bibl
                 Type type = value.GetType();
                 var pole1 = type.GetField(pole);
                 var svoistvo = type.GetProperty(pole);
-                string[] words = layout.Split(new char[] { preValue, postValue });
-                string str = "";
-                for (int i = 0; i < words.Length; i++)
+                //string[] words = layout.Split(new char[] { preValue, postValue });
+                
+                
+                //string str = "";
+            if (listBox.Items.Count < stroka)
+            {
+                for (int i = listBox.Items.Count; i < stroka; i++)
                 {
-                if (i % 2 == 1)
+                    listBox.Items.Add(layout);
+                }
+            }
+            if (pole1 != null)
+            {
+                listBox.Items[stroka] = listBox.Items[stroka].ToString().Replace(preValue + pole + postValue, pole1.GetValue(value).ToString());
+            }
+            if (svoistvo != null)
+            {
+                listBox.Items[stroka] = listBox.Items[stroka].ToString().Replace(preValue + pole + postValue, svoistvo.GetValue(value).ToString());
+            }
+            
+            /*string wordsstroka = listBox.Items[stroka].ToString();
+            wordsstroka = wordsstroka.Replace(words[0], "");
+            for (int i = 2; i < words.Length; i = i + 2) if (words[i].Length > 0) wordsstroka = wordsstroka.Replace(words[i], ";");
+            string[] selectedValues = wordsstroka.Split(';');
+            for (int i = 0; i < words.Length; i++)
                 {
-                    if (pole1.Name.Equals(words[i]) && pole1 != null)
+                    if (i % 2 == 1)
                     {
-                        str += pole1.GetValue(value);
-                        break;
+                        if (pole1.Name.Equals(words[i]) && pole1 != null && selectedValues[i - 1] == null)
+                        {
+                            str += pole1.GetValue(value);
+                            break;
+                        }
+                        if (svoistvo.Name.Equals(words[i]) && svoistvo != null && selectedValues[i - 1] == null)
+                        {
+                            str += svoistvo.GetValue(value);
+                            break;
+                        }
+                        if (selectedValues[i - 1] != null)
+                            str += selectedValues[i - 1];
                     }
-                    if (svoistvo.Name.Equals(words[i]) && svoistvo != null)
-                    {
-                        str += svoistvo.GetValue(value);
-                        break;
-                    }
-                }
-                else str += words[i];
-                }
-                if (listBox.Items[stroka] != null && listBox.Items[stroka].ToString() != str)
-                {
-                    listBox.Items[stroka] = str;
-                }
+                    else str += words[i];
+                }*/
+            
+                
+                    /*listBox.Items[stroka] = str;
+
                 if (listBox.Items[stroka] == null)
                 {
                     listBox.Items.Add(str);
-                }
+                }*/
         }
     }
 }
