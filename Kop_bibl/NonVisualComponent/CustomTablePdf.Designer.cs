@@ -1,7 +1,7 @@
 ﻿
-namespace Kop_bibl
+namespace Kop_bibl.NonVisualComponent
 {
-    partial class PdfFirstComponent
+    partial class CustomTablePdf
     {
         /// <summary>
         /// Обязательная переменная конструктора.
