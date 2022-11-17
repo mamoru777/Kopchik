@@ -31,7 +31,7 @@ namespace Kop_bibl.NonVisualComponent
             InitializeComponent();
         }
         public void SaveTable<T>(string folder, string docTitle, /*List<PdfColumnInfo> columns,*/ List<string> ColFields, List<string> ColFields2, List<Tuple<int, int>> MergeCells,
-           /*PdfRowInfo[] rows,*/ List<T> objList)
+           /*PdfRowInfo[] rows,*/ List<T> objList, double[] width)
         {
             IsDataNotEmpty(objList);
             Document document = new Document();
@@ -43,10 +43,20 @@ namespace Kop_bibl.NonVisualComponent
             
             
             var colvololumns = objList[0].GetType().GetProperties();
-            foreach (var column in colvololumns)
+            for (int i = 0; i < colvololumns.Length; i++)
             {
-                table.AddColumn().Format.Alignment = ParagraphAlignment.Center;
+                var col = table.AddColumn();
+                col.Format.Alignment = ParagraphAlignment.Center;
+                col.Width = width[i];
             }
+            /*foreach (var column in colvololumns)
+            {
+                var col = table.AddColumn();
+                col.Format.Alignment = ParagraphAlignment.Center;
+                col.Width = w
+                table.AddColumn().Format.Alignment = ParagraphAlignment.Center;
+                
+            }*/
             
             foreach (var item in objList)
             {

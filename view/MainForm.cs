@@ -11,6 +11,7 @@ using Kop_bibl.NonVisualComponent;
 using Kop_bibl.NonVisualComponent.HelperModels;
 using view.Model;
 
+
 namespace view
 {
     public partial class MainForm : Form
@@ -69,25 +70,21 @@ namespace view
             ColTitles2.Add("Product");
             List<Tuple<int, int>> MergeCells = new List<Tuple<int, int>>();
             MergeCells.Add(new Tuple<int,int>(1, 2));
-            /*List<PdfColumnInfo> columns = new List<PdfColumnInfo>();
-            PdfRowInfo[] rows = new PdfRowInfo[2];
-
-            columns.Add(new PdfColumnInfo { Name = "BuyerName", PropertyName = "BuyerName" });
-            columns.Add(new PdfColumnInfo { Name = "ProductName", PropertyName = "ProductName" });
-            columns.Add(new PdfColumnInfo { Name = "Price", PropertyName = "Price" });
-
-            rows[0] = new PdfRowInfo() { Height = 50 };
-            rows[1] = new PdfRowInfo() { Height = 50 };
-
-            ctc.SaveTable(folder, title, columns, rows, orderList);*/
-            ctc.SaveTable(folder, title, ColTitles, ColTitles2, MergeCells ,orderList);
+            double[] width = {60.0, 67.5, 56};//new double[ColTitles.Count];
+            //width =  { (1.0, 0.75, 0.6 )};
+            ctc.SaveTable(folder, title, ColTitles, ColTitles2, MergeCells ,orderList, width);
             }
             private void button3_Click(object sender, EventArgs e)
         {
             LinearDiagramPdfComponent lpc = new LinearDiagramPdfComponent();
             string folder = "D:\\testPdf\\thirdComponent.pdf";
             string title = "Test";
-            lpc.SaveDiagram(title, folder);
+            //LegendInfo leg = LegendInfo.LeftArea;
+            Dictionary<string, double[]> dic = new Dictionary<string, double[]>();
+            dic.Add("Values1", new double[] { 10, 20, 30 });
+            dic.Add("Values2", new double[] { 30, 20, 10 });
+            dic.Add("Values3", new double[] { 15, 30, 20 });
+            lpc.SaveDiagram(title, folder, dic);
         }
     }
 }
