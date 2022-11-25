@@ -7,7 +7,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Kop_bibl\Kop_bibl.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Librories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="2_laba">
+      <HintPath>Librories\2_laba.dll</HintPath>
+    </Reference>
+    <Reference Include="Libarary1_COP">
+      <HintPath>Librories\Libarary1_COP.dll</HintPath>
+    </Reference>
+    <Reference Include="Library2_COP">
+      <HintPath>Librories\Library2_COP.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
