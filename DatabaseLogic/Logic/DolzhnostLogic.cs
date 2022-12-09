@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicBd.Storage;
-using LogicBd.BindingModel;
-using LogicBd.Model;
-using LogicBd.ViewModel;
+using DatabaseLogic.Storage;
 
-namespace LogicBd.Logic
+using DatabaseLogic.BindingModel;
+using DatabaseLogic.Model;
+using DatabaseLogic.ViewModel;
+
+namespace DatabaseLogic.Logic
 {
     public class DolzhnostLogic
     {
@@ -22,7 +23,7 @@ namespace LogicBd.Logic
         {
             var element = DolzhnostStorage.GetElement(new DolzhnostBindingModel
             {
-                Id = model.Id
+                Dol = model.Dol
             });
 
             if (element != null && element.Id != model.Id)
@@ -39,22 +40,6 @@ namespace LogicBd.Logic
                 DolzhnostStorage.Insert(model);
             }
         }
-
-        public void Create(DolzhnostBindingModel model)
-        {
-            DolzhnostStorage.Insert(model);
-        }
-
-        public void Update(DolzhnostBindingModel model)
-        {
-            var element = DolzhnostStorage.GetElement(model);
-            if (element == null)
-            {
-                throw new Exception("Элемент не найден");
-            }
-            DolzhnostStorage.Update(model);
-        }
-
         public void Delete(DolzhnostBindingModel model)
         {
             var element = DolzhnostStorage.GetElement(new DolzhnostBindingModel

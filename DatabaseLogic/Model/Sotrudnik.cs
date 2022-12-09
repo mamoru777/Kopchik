@@ -5,20 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace LogicBd.Model
+namespace DatabaseLogic.Model
 {
     public class Sotrudnik
     {
         
         public int Id { get; set; }
-        [Required]
+        
         public string FIO { get; set; }
-        [Required]
+        
         public string Autobiography { get; set; }
-        [Required]
+        
         public string Dol { get; set; }
-        [Required]
-        public DateTime? dateupkval { get; set; }
+       
+        public string dateupkval { get; set; }
+        public override string ToString() => $"{Id} - {FIO} {Dol} ({dateupkval})";
 
     }
 }

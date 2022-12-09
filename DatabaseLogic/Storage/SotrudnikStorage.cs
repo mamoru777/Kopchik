@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicBd.BindingModel;
-using LogicBd.ViewModel;
-using LogicBd.Model;
+using DatabaseLogic.BindingModel;
+using DatabaseLogic.ViewModel;
+using DatabaseLogic.Model;
 
-namespace LogicBd.Storage
+namespace DatabaseLogic.Storage
 {
     public class SotrudnikStorage
     {

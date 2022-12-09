@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicBd.BindingModel;
-using LogicBd.Model;
-using LogicBd.ViewModel;
+using DatabaseLogic.BindingModel;
+using DatabaseLogic.Model;
+using DatabaseLogic.ViewModel;
 
-namespace LogicBd.Storage
+namespace DatabaseLogic.Storage
 {
     public class DolzhnostStorage
     {
@@ -33,9 +33,9 @@ namespace LogicBd.Storage
                 return null;
             }
             using var context = new Database();
-            var Dolzhnost = context.Dolzhnosti
-                .FirstOrDefault(rec => rec.Id == model.Id);
-            return Dolzhnost != null ? CreateModel(Dolzhnost) : null;
+            var element = context.Dolzhnosti
+                .FirstOrDefault(rec => rec.Dol == model.Dol || rec.Id == model.Id) ;
+            return element != null ? CreateModel(element) : null;
         }
         public List<DolzhnostViewModel> GetFilteredList(DolzhnostBindingModel model)
         {
@@ -45,7 +45,7 @@ namespace LogicBd.Storage
             }
             using var context = new Database();
             return context.Dolzhnosti
-                .Where(rec => rec.Id.Equals(model.Id))
+                .Where(rec => rec.Dol == model.Dol)
                 .ToList()
                 .Select(CreateModel)
                 .ToList();

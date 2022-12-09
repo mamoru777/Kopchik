@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
-namespace LogicBd.Model
+namespace DatabaseLogic.BindingModel
 {
-    public class Dolzhnost
+    public class DolzhnostBindingModel
     {
-        public int Id { get; set; }
-        [Required]
+        public int? Id { get; set; }
         public string Dol { get; set; }
     }
 }

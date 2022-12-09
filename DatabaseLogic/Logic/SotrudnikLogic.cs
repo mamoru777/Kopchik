@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using LogicBd.BindingModel;
-using LogicBd.Storage;
-using LogicBd.ViewModel;
+using DatabaseLogic.BindingModel;
+using DatabaseLogic.Storage;
+using DatabaseLogic.ViewModel;
+using DatabaseLogic.Model;
 
-namespace LogicBd.Logic
+namespace DatabaseLogic.Logic
 {
     public class SotrudnikLogic
     {
@@ -85,5 +86,16 @@ namespace LogicBd.Logic
             }
             return sotrudnikStorage.GetFilteredList(model);
         }
+        /*public List<Sotrudnik> Read2(SotrudnikBindingModel model)
+        {
+            if (model == null )
+            {
+                using var context = new Database();
+                return context.Sotrudniki
+                    .ToList()
+                    .Select(CreateModel)
+                    .ToList();
+            }
+        }*/
     }
 }

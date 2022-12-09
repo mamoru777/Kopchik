@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace LogicBd.ViewModel
+namespace DatabaseLogic.ViewModel
 {
     public class SotrudnikViewModel
     {
@@ -18,6 +18,6 @@ namespace LogicBd.ViewModel
         [DisplayName("Должность")]
         public string Dol { get; set; }
         [DisplayName("Дата повышения квалификации")]
-        public DateTime? dateupkval { get; set; }
+        public string dateupkval { get; set; }
     }
 }
