@@ -18,7 +18,7 @@ namespace DatabaseLogic.Model
         
         public string Dol { get; set; }
        
-        public string dateupkval { get; set; }
+        public DateTime? dateupkval { get; set; }
         public override string ToString() => $"{Id} - {FIO} {Dol} ({dateupkval})";
 
     }

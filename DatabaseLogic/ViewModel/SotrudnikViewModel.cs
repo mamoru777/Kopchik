@@ -18,6 +18,6 @@ namespace DatabaseLogic.ViewModel
         [DisplayName("Должность")]
         public string Dol { get; set; }
         [DisplayName("Дата повышения квалификации")]
-        public string dateupkval { get; set; }
+        public DateTime? dateupkval { get; set; }
     }
 }

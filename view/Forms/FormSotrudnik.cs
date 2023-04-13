@@ -80,7 +80,7 @@ namespace view.Forms
                                 FIO = textBoxFio.Text,
                                 Autobiography = textBoxAuto.Text,
                                 Dol = controlSelectedComboBoxList1.SelectedElement,
-                                dateupkval = controlInputNullableDate1.Value.ToString()
+                                //dateupkval = controlInputNullableDate1.Value
                             }); 
                             return true;
                         }
@@ -104,7 +104,7 @@ namespace view.Forms
                                 FIO = textBoxFio.Text,
                                 Autobiography = textBoxAuto.Text,
                                 Dol = controlSelectedComboBoxList1.SelectedElement,
-                                dateupkval = controlInputNullableDate1.Value.ToString()
+                                //dateupkval = controlInputNullableDate1.Value
                             });
                             return true;
                         }

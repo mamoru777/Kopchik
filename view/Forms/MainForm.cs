@@ -28,6 +28,7 @@ namespace view
 
         private SotrudnikLogic sotLogic;
         private DolzhnostLogic dolLogic;
+
         /*private List<DataTa>
         private List<>
         private List<>*/
@@ -52,6 +53,7 @@ namespace view
             {
                 controlDataTreeTable1.AddTable(data);
             }
+            //controlDataTreeTable1.Select();
         }
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
@@ -70,15 +72,15 @@ namespace view
                 case Keys.D:
                     DeleteElement();
                     break;
-                /*case Keys.S:
-                    CreateImageDoc();
+                case Keys.S:
+                    CreateBigDataDoc();
                     break;
                 case Keys.T:
                     CreateTableDoc();
                     break;
                 case Keys.C:
-                    CreateChartDoc();
-                    break;*/
+                    CreatePieDoc();
+                    break;
             }
         }
         private void AddNewElement()
@@ -91,9 +93,11 @@ namespace view
         }
         private void UpdateElement()
         {
-
-            var element = controlDataTreeTable1.GetSelectedObject<SotrudnikViewModel>();
-            if (element.dateupkval == "")
+            //int? element = controlDataTreeTable1.GetSelectedObject<SotrudnikViewModel>().Id;
+            //if (controlDataTreeTable1.GetSelectedObject<SotrudnikViewModel>().dateupkval == null)
+            var element = controlDataTreeTable1.GetSelectedObject<SotrudnikBindingModel>();//<SotrudnikViewModel>();
+            //controlDataTreeTable1.
+            /*if (element.dateupkval == "")
             {
                 //Convert.ToDateTime(element.dateupkval);
                 element.dateupkval = null;
@@ -103,15 +107,15 @@ namespace view
             else
             {
                 Convert.ToDateTime(element.dateupkval);
-            }
-                
+            }*/
+
             if (element == null)
             {
                 MessageBox.Show("Нет выбранного элемента", "Ошибка",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            var form = new FormSotrudnik { Id = element.Id };
+            var form = new FormSotrudnik { Id = Convert.ToInt32(element.Id) };
             if (form.ShowDialog() == DialogResult.OK)
             {
                 ReloadData();
@@ -131,7 +135,7 @@ namespace view
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            sotLogic.Delete(new SotrudnikBindingModel { Id = element.Id });
+            sotLogic.Delete(new SotrudnikBindingModel { Id = element.Id});
             ReloadData();
         }
         private void CreateBigDataDoc()
@@ -142,7 +146,7 @@ namespace view
             List<string> list = new List<string>();
             foreach (var sot in list2)
             {
-                if (sot.dateupkval != "")
+                if (sot.dateupkval != null)
                 {
                     list.Add(sot.FIO + " " + sot.Autobiography);
                 }
@@ -172,7 +176,7 @@ namespace view
                     {
                         FIO = sot.FIO,
                         Autobiography = sot.Autobiography,
-                        dateupkval = "Не проходил",
+                        dateupkval = Convert.ToDateTime(sot.dateupkval)/*"Не проходил"*/,
                         Dol = sot.Dol
                     });
                 }
@@ -182,7 +186,7 @@ namespace view
                     {
                         FIO = sot.FIO,
                         Autobiography = sot.Autobiography,
-                        dateupkval = sot.dateupkval.ToString(),
+                        dateupkval = Convert.ToDateTime(sot.dateupkval),
                         Dol = sot.Dol
                     });
                 }

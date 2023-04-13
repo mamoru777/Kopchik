@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace DatabaseLogic.Migrations
 {
@@ -28,7 +29,7 @@ namespace DatabaseLogic.Migrations
                     FIO = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Autobiography = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Dol = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    dateupkval = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    dateupkval = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {

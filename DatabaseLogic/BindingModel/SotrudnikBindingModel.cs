@@ -12,6 +12,6 @@ namespace DatabaseLogic.BindingModel
         public string FIO { get; set; }
         public string Autobiography { get; set; }
         public string Dol { get; set; }
-        public string dateupkval { get; set; }
+        public DateTime? dateupkval { get; set; }
     }
 }
